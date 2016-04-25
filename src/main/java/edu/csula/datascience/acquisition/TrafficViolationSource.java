@@ -38,7 +38,8 @@ public class TrafficViolationSource implements Source<TrafficViolation>{
 	public static void getAPIData(List<TrafficViolation> list)
 			throws IOException {
 		BufferedReader bf = null;
-		String link_url = "https://data.montgomerycountymd.gov/resource/ms8i-8ux3.json?$$app_token="+AccessToken.accessToken+"&$limit=1000000";
+		String link_url = "";
+		//link_url="https://data.montgomerycountymd.gov/resource/ms8i-8ux3.json?$$app_token="+AccessToken.accessToken+"&$limit=1000000";
 		URL url = new URL(link_url);
 		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 		bf = new BufferedReader(new InputStreamReader(con.getInputStream()));
