@@ -1,11 +1,11 @@
 package edu.csula.datascience.acquisition;
 
-/**
- * Mock raw data
- */
-public class MockData {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-    private String accident;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TrafficViolation {
+
+	private String accident;
 	private String agency;
 	private String alcohol;
 	private String arrest_type;
@@ -37,12 +37,12 @@ public class MockData {
 	private String violation_type;
 	private String work_zone;
 	private String year;
-	
-	public MockData()
-	{
-		
+
+	public TrafficViolation() {
+
 	}
-	public MockData(String accident, String agency, String alcohol,
+
+	public TrafficViolation(String accident, String agency, String alcohol,
 			String arrest_type, String article, String belts, String charge,
 			String color, String commercial_license, String commercial_vehicle,
 			String contributed_to_accident, String date_of_stop,
@@ -342,5 +342,5 @@ public class MockData {
 	public void setYear(String year) {
 		this.year = year;
 	}
-    
+
 }

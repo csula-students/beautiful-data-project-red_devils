@@ -1,0 +1,18 @@
+# Gradle related files
+.gradle/
+.idea/
+build/
+*.env
+
+/bin/
+
+
+#not adding class files
+*.class
+
+#neglect war, jar files
+*.jar
+*.ear
+*.war
+
+AccessToken.java
