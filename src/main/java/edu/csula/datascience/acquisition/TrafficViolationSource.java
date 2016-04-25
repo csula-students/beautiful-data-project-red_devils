@@ -28,7 +28,7 @@ public class TrafficViolationSource implements Source<TrafficViolation>{
 		getAPIData(list);
 		System.out.println("finish calling api call and collect data");
 		String fileName="";
-		//fileName="/home/dipesh/TrafficViolation/Traffic_Violations.csv";
+	     	//fileName="/home/dipesh/TrafficViolation/Traffic_Violations.csv";
 		File file=new File(fileName);
 		readData(file,list);		
 		System.out.println("finished read and collect data from CSV");
