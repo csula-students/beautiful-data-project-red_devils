@@ -10,7 +10,7 @@ public class AuthenticationApp {
         System.out.println(
             String.format(
                 "Token: %s",
-                auth.getToken("CS-454")
+                auth.getToken("CS-594")
             )
         );
     }

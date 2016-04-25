@@ -18,7 +18,7 @@ repositories {
 
 jar {
   manifest {
-    attributes 'Main-Class': 'edu.csula.datascience.examples.MongoExampleApp'
+    attributes 'Main-Class': 'edu.csula.datascience.examples.Hello'
   }
 }
 
@@ -33,7 +33,10 @@ dependencies {
   compile 'com.mashape.unirest:unirest-java:1.4.9'
   compile 'org.mongodb:mongodb-driver:3.2.2'
   compile 'org.twitter4j:twitter4j-core:4.0.4'
+  compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+  compile 'org.apache.commons:commons-csv:1.2'
 
+  compile group: 'commons-io', name: 'commons-io', version: '2.0.1'
   testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
