@@ -39,7 +39,6 @@ public class CollectorTest {
     	List<SimpleModel> list = (List<SimpleModel>) collector.mungee(src.readCSV()); 
     	Assert.assertNotNull(list);
     }
-    @Test
     public void testDataCSV()
     {
     	MockSource src=new MockSource();
