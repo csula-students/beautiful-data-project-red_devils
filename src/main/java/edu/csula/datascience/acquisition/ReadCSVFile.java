@@ -17,7 +17,8 @@ import org.json.JSONObject;
 public class ReadCSVFile {
 
 	public static void main(String args[]) {
-		String fileName="/home/dipesh/TrafficViolation/Traffic_Violations.csv";
+		String fileName="";
+//		fileName="/home/dipesh/TrafficViolation/Traffic_Violations.csv";
 		File file=new File(fileName);
 		readData(file);
 	}

@@ -46,7 +46,8 @@ public class MockSource implements Source<MockData> {
 	public Collection<MockData> readCSV()
     {
     	List<MockData> list=new ArrayList<MockData>();
-    	String fileName="D:/cs594 traffic violation/Traffic_Violations.csv";
+    	String fileName="";
+//    	fileName="D:/cs594 traffic violation/Traffic_Violations.csv";
 		File file=new File(fileName);
     	CSVParser parser;
 		try {
