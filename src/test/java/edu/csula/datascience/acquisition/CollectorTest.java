@@ -6,7 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import java.util.List;
+
 
 /**
  * A test case to show how to use Collector and Source
@@ -23,6 +25,7 @@ public class CollectorTest {
 
     @Test
     public void mungee() throws Exception {
+
     	List<SimpleModel> list = (List<SimpleModel>) collector.mungee(source.next());     
         Assert.assertEquals(list.size(), 2);
     }

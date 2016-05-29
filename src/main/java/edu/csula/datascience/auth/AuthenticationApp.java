@@ -9,8 +9,12 @@ public class AuthenticationApp {
 
         System.out.println(
             String.format(
-                "Token: %s",
+                "Token: %s"
+/*<<<<<<< HEAD
                 auth.getToken("CS-594")
+=======
+                auth.getToken("CS-454")
+>>>>>>> c6fa708cd278d8643d493dd89c22158a3109450b*/
             )
         );
     }

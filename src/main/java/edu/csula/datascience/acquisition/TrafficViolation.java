@@ -32,11 +32,11 @@ public class TrafficViolation {
 	private String race;
 	private String state;
 	private String subagency;
-	private String time_of_stop;
+	private String time_of_stop; 
 	private String vehicle_type;
 	private String violation_type;
 	private String work_zone;
-	private String year;
+	private String year;//integer
 
 	public TrafficViolation() {
 
@@ -53,30 +53,30 @@ public class TrafficViolation {
 			String subagency, String time_of_stop, String vehicle_type,
 			String violation_type, String work_zone, String year) {
 		super();
-		this.accident = accident;
+		this.accident = accident.toLowerCase();
 		this.agency = agency;
-		this.alcohol = alcohol;
+		this.alcohol = alcohol.toLowerCase();
 		this.arrest_type = arrest_type;
 		this.article = article;
-		this.belts = belts;
+		this.belts = belts.toLowerCase();
 		this.charge = charge;
 		this.color = color;
 		this.commercial_license = commercial_license;
 		this.commercial_vehicle = commercial_vehicle;
 		this.contributed_to_accident = contributed_to_accident;
-		this.date_of_stop = date_of_stop;
+		this.date_of_stop=date_of_stop;
 		this.description = description;
 		this.dl_state = dl_state;
 		this.driver_city = driver_city;
 		this.driver_state = driver_state;
-		this.fatal = fatal;
+		this.fatal = fatal.toLowerCase();
 		this.gender = gender;
-		this.hazmat = hazmat;
+		this.hazmat = hazmat.toLowerCase();
 		this.location = location;
 		this.make = make;
 		this.model = model;
-		this.personal_injury = personal_injury;
-		this.property_damage = property_damage;
+		this.personal_injury = personal_injury.toLowerCase();
+		this.property_damage = property_damage.toLowerCase();
 		this.race = race;
 		this.state = state;
 		this.subagency = subagency;

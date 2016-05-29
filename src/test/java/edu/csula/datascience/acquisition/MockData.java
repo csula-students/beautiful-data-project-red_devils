@@ -5,6 +5,7 @@ package edu.csula.datascience.acquisition;
  */
 public class MockData {
 
+
     private String accident;
 	private String agency;
 	private String alcohol;
@@ -342,5 +343,4 @@ public class MockData {
 	public void setYear(String year) {
 		this.year = year;
 	}
-    
 }
