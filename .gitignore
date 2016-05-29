@@ -2,6 +2,6 @@
 *
 # But not these files...
 *.class
-Traffic_Violations.csv
+#Traffic_Violations.csv
 
 
