@@ -2,6 +2,7 @@ package edu.csula.datascience.acquisition;
 
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -20,6 +21,14 @@ import org.elasticsearch.common.unit.ByteSizeValue;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.node.Node;
 
+import io.searchbox.action.BulkableAction;
+import io.searchbox.client.JestClient;
+import io.searchbox.client.JestClientFactory;
+import io.searchbox.client.config.HttpClientConfig;
+import io.searchbox.core.Bulk;
+import io.searchbox.core.Index;
+
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
@@ -30,12 +39,14 @@ public class TrafficViolationCollector implements Collector<TrafficViolation, Tr
     MongoClient mongoClient;
     MongoDatabase database;
     MongoCollection<Document> collection;
+    //define index name
     final String indexName = "big-data";
+    //define type name
     final String typeName = "trafficViolations";
+    String awsAddress = "http://{{yourelasticsearchname.us-west-2.es.amazonaws.com}}/";
     public TrafficViolationCollector() {
     	
         // establish database connection to MongoDB
-    	
         mongoClient = new MongoClient();
         
         // select `big-data` as testing database
@@ -44,6 +55,7 @@ public class TrafficViolationCollector implements Collector<TrafficViolation, Tr
         // select collection by name `trafficViolations`
         collection = database.getCollection("trafficViolations");
     }
+    
     @Override
     public Collection<TrafficViolation> mungee(Collection<TrafficViolation> src) {
     	return src
@@ -64,7 +76,7 @@ public class TrafficViolationCollector implements Collector<TrafficViolation, Tr
         .collect(Collectors.toList());
     }
     
-
+    //inserting into mango db
     @Override
     public void save(Collection<TrafficViolation> data) {    	
     	  List<Document> documents = data.stream().map(item -> new Document()
@@ -105,6 +117,31 @@ public class TrafficViolationCollector implements Collector<TrafficViolation, Tr
         mongoClient.close();
     }
     
+    // inserting into AWS elasticsearch
+    @SuppressWarnings("rawtypes")
+	public void saveAWS(Collection<TrafficViolation> data) throws IOException
+    {
+    	JestClientFactory factory = new JestClientFactory();
+        factory.setHttpClientConfig(new HttpClientConfig
+            .Builder(awsAddress)
+            .multiThreaded(true)
+            .build());
+        JestClient client = factory.getObject();
+        
+            Collection<BulkableAction> actions = Lists.newArrayList();
+            data.stream()
+                .forEach(tmp -> {
+                    actions.add(new Index.Builder(tmp).build());
+                });
+            Bulk.Builder bulk = new Bulk.Builder()
+                .defaultIndex(indexName)
+                .defaultType(typeName)
+                .addAction(actions);
+            client.execute(bulk.build());
+            System.out.println("Inserted 500 documents to cloud");
+    }
+    
+    //inserting into local elasticsearch
     public void saveElasticsearch(Collection<TrafficViolation> data) throws URISyntaxException
     {
     	//mapping
