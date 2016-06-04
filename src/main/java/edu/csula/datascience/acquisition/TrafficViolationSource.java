@@ -46,7 +46,7 @@ public class TrafficViolationSource implements Source<TrafficViolation> {
 			throws IOException, URISyntaxException {
 		System.out.println("Started getting data from api");
 		BufferedReader bf = null;
-		String link_url = "https://data.montgomerycountymd.gov/resource/ms8i-8ux3.json?$$app_token="+AccessToken.accessToken+"&$limit=1000000";
+		String link_url = "https://data.montgomerycountymd.gov/resource/ms8i-8ux3.json?$$app_token=&$limit=1000000";
 		URL url = new URL(link_url);
 		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 		bf = new BufferedReader(new InputStreamReader(con.getInputStream()));
